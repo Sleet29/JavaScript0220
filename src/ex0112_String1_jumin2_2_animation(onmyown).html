@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>String 객체의 메소드 활용</title>
+<style>
+	@keyframes textColorAnimation {
+		0% {color: red;}	
+		20% {color: orange;}	
+		40% {color: yellow;}	
+		60% {color: green;}	
+		80% {color: blue;}	
+		100% {color: magenta;}	
+		}
+			
+	span 	{
+			font-weight:bold;
+			font-size:70px;
+			animation-name:textColorAnimation;
+			animation-duration:5s;
+			animation-iteration-count : infinite;
+	}
+</style>
+</head>
+<!-- 
+var jumin = prompt("주민번호를 입력하세요?", "810908-3234567");
+1. 주민번호 길이가 14개인지 확인
+	alert()을 이용한 "주민번호의 길이는 14개 입니다."
+	
+2. 앞자리 6개가 숫자인지 확인
+	- alert()을 이용한 "앞자리 형식을 확인하세요"
+	- isNaN()을 이용하면 숫자인지 아닌지 알 수 있어요
+		이 함수는 전달된 값이 숫자가 아니면 true를 반환하고, 그렇지 않으면 false를 반환합니다
+3. 7번째 자리가 '-'인지 확인
+      alert()을 이용한 "앞자리 입력 후 -을 입력하세요"
+      
+4. 뒷자리 7자리가 숫자인지 확인   
+     alert()을 이용한 "뒷자리 형식을 확인하세요"
+     
+5. 뒷자리 첫번째 자리가 1 또는 3이면 "남자" 와 배경색 파랑, 2 또는 4이면 "여자" 와 배경색 pink - body에 출력
+
+6. 만약 1~4번인 경우 alert창 나온 뒤 확인 버튼 클릭하면 body에 "형식에 맞지 않습니다." 출력합니다.
+
+ -->
+<body>
+	<script>
+	// 주민번호를 입력받아 남자와 여자에 따라 body 배경색을 설정합니다.
+		var jumin = prompt("주민번호를 입력하세요?", "810908-3234567");
+		if (jumin.length !=14) {
+			alert('주민번호의 길이는 14개 입니다.');
+		} else {
+			var front = jumin.substring(0,6);
+			if(isNaN(front)){
+				alert('앞자리 형식을 확인하세요');
+			} else {
+				if(jumin.charAt(6) != '-') {
+					alert('앞자리 입력 후 -을 입려하세요')
+				} else {
+					var back = jumin.substring(7);
+					if(isNaN(back)) {
+						alert('뒷자리 형식을 확인하세요');
+					} else {
+						 var genderNum = jumin.charAt(7);
+						 	
+						 	if (genderNum == '1' || genderNum == '3') {
+	                            document.body.style.backgroundColor = "#595698"; // 남자 - 파랑
+	                            document.body.innerHTML = "<h3>String 객체의 메소드 활용</h3><hr><br><span class = 'gender-text'>남자</span>";
+	                        } else if (genderNum == '2' || genderNum == '4') {
+	                            document.body.style.backgroundColor = "#FFBFCB"; // 여자 - 분홍
+	                            document.body.innerHTML = "<h3>String 객체의 메소드 활용</h3><hr><br><span class = 'gender-text'>여자</span>";
+	                        } else {
+	                            // 1~4번이 아닌 경우
+	                            alert('형식에 맞지 않습니다.');
+	                        }
+					}
+				}
+			}
+		}	
+	
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>innerHTML 속성</title>
+<style>
+	#books caption { font-size: 14px;
+					 font-weight: bold;
+					 margin: 0.5em}
+	
+	/*
+	 table-layout 속성 : auto (각 열의 크기를 자동으로 계싼 - 기본값)
+	*/
+	
+	#books { border-collapse:collapse;
+			 width:500px;
+			 margin: 0 auto;
+			 text-align:center}
+	td,th,#books {
+			 /*border: 1px solid black;
+			 border-bottom:1px solid #444444;*/
+			 border-left:none;
+			 border-right:none;
+			 }
+			 
+			 
+	th {
+		background-color:#D5D3D5;
+		border-top:none;
+		border-bottom:none;
+	}
+	
+	tr:hover {
+		background-color:rgb(197, 197, 197);
+	}
+
+</style>
+ 
+<!--
+다음과 같은 북 리스트가 존재하는 경우 주문할 책 수량을 입력받고 그 수량만큼 책 제목을 번호로 
+선택해서 테이블로 출력합니다.
+
+참고)
+1. 책의 제목을 변수에 대입합니다. 
+var book1 = "자바스크립트";
+var book2 = "HTML";
+var book3= "CSS";
+
+2. prompt()함수를 이용해서 "주문할 책 수량을 입력 하세요?"라는 문구가 나오고 수량을 입력합니다.
+
+3. 책 제목을 번호로 선택하세요...
+	1. 자바스크립트
+	2.HTML
+	3.CSS
+	
+	2번의 수량만큼 책 번호를 선택하게끔 반복합니다.
+	만약 범위에 없는 수를 입력하면 "리스트에 없는 책을 선택하셨습니다"라는 alert창을 띄우고 
+	다시 입력 받습니다.
+
+4. 책 수량만큼 입력 받은 후 테이블을 이용해서 선택한 책의 제목이 출력되도록 합니다.
+-->
+</sytle>
+</head>
+<body>
+	<script>
+		var book1 = "자바스크립트";
+		var book2 = "HTML";
+		var book3 = "CSS";
+		var count=prompt("주문할 책 수량을 입력 하세요?");
+		
+		
+		var list = "<table id=books>";
+		list += "<caption> 책 주문 입력 내용 </caption>";
+		list += "<thead>";
+		list += "<tr>";
+		list += "<th> 순번 </th>";
+		list += "<th> 제목 </th>";
+		list += "</tr>";
+		list += "</thead>";
+		list += "<tbody>";
+		list += "<tr> <td> 1 </td> <td> " + book1 + " </td> </tr>";
+		list += "<tr> <td> 2 </td> <td> " + book2 + " </td> </tr>";
+		list += "<tr> <td> 3 </td> <td> " + book3 + " </td> </tr>";
+		list += "</tbody>";
+		list += "</table>";
+		
+		for (var i=1;i<=Number(count);i++){
+			var count2 = prompt("책 제목을 번호로 선택하세요\n1.자바 스크립트\n2.HTML\n3.CSS");
+			if(count2<=count && count2>=1){
+				list += count2;
+			} else {
+				prompt("다시 입력하세요");
+				--i;
+				continue;
+			}
+		}
+		
+		document.body.innerHTML = list;
+		
+	</script>
+
+
+</body>
+</html>
