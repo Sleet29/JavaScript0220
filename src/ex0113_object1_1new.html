@@ -98,7 +98,12 @@
 	document.write(saram['blood'] + "<br>");
 	document.write(saram["address"] + "<hr>");
 	
-	
+	// 출력 방법 4: for문 이용
+	// 객체 saram의 모든 property 이름을 차례대로 p에 저장
+	for(var p in saram){
+		document.write(p + ":" + saram[p] + "<br>")
+	}
+	document.write("<hr>")
 	</script>
 
 
